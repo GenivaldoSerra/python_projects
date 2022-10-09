@@ -18,3 +18,11 @@ async def root():
 @app.get("/funcionarios")
 async def get_funcionarios():
     return {'funcionarios': funcionarios}
+
+
+@app.get("/funcionarios/{id}")
+async def get_funcionario(id: int):
+    for funcionario in funcionarios:
+        if funcionario['id'] == id:
+            return funcionario
+    return {'message': 'Funcionario não encontrado'}
