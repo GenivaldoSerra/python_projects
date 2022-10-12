@@ -13,8 +13,12 @@ class Hoteis(Resource):
         return {'hoteis': hoteis_bd}
     
 class Hotel(Resource):
-    def get(self):
-        pass
+    def get(self, id):
+        for hotel in hoteis_bd:
+            if hotel['id'] == id:
+                return hotel
+        return {'message': 'Hotel not found.'}, 404
+        
     
     def post(self):
         pass
