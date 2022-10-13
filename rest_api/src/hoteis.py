@@ -12,10 +12,15 @@ class Hoteis(Resource):
         return {'hoteis': hoteis_bd}
     
 class Hotel(Resource):
-    def get(self, id):
+    def find_hotel(self, id):
         for hotel in hoteis_bd:
             if hotel['id'] == id:
                 return hotel
+        return None
+    def get(self, id):
+        hotel = self.find_hotel(id)
+        if hotel:
+            return hotel
         return {'message': 'Hotel not found.'}, 404
         
     
