@@ -31,17 +31,8 @@ class Hotel(Resource):
         
     
     def post(self, id):
-       
         new_args = self.arg_list.parse_args()
-        
-        new_hotel = {
-            'id': id,
-            'nome': new_args['nome'],
-            'estrelas': new_args['estrelas'],
-            'diaria': new_args['diaria'],
-            'cidade': new_args['cidade']
-        }
-        
+        new_hotel = { 'id': id, **new_args }
         hoteis_bd.append(new_hotel)
         
         return new_hotel, 201
