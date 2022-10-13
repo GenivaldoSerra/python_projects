@@ -1,6 +1,5 @@
 from flask_restful import Resource, reqparse
 
-
 hoteis_bd = [
     {'id': 'alpha', 'nome': 'Alpha Hotel', 'estrelas': 4.3, 'diaria': 420.34, 'cidade': 'Rio de Janeiro'},
     {'id': 'bravo', 'nome': 'Bravo Hotel', 'estrelas': 4.4, 'diaria': 380.90, 'cidade': 'Santa Catarina'},
@@ -22,7 +21,10 @@ class Hotel(Resource):
     
     def post(self, id):
         arg_list = reqparse.RequestParser()
-        arg_list.add_argument('nome', 'esrtelas', 'diaria', 'cidade')
+        arg_list.add_argument('nome'),
+        arg_list.add_argument('estrelas'),
+        arg_list.add_argument('diaria'),
+        arg_list.add_argument('cidade'),
         
         new_args = arg_list.parse_args()
         
