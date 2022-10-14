@@ -67,6 +67,7 @@ class Hotel(Resource):
         hoteis_bd.append(new_hotel)
         return new_hotel, 201
     
+    
     def delete(self, id):
         global hoteis_bd
         hoteis_bd = [hotel for hotel in hoteis_bd if hotel['id'] != id]
