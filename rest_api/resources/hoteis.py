@@ -7,6 +7,23 @@ hoteis_bd = [
     {'id': 'delta', 'nome': 'Delta Hotel', 'estrelas': 3.9, 'diaria': 240.12, 'cidade': 'Minas Gerais'},
 ]
 
+class HotelModel:
+    def __init__(self, id, nome, estrelas, diaria, cidade):
+        self.id = id
+        self.nome = nome
+        self.estrelas = estrelas
+        self.diaria = diaria
+        self.cidade = cidade
+    
+    def json(self):
+        return {
+            'id': self.id,
+            'nome': self.nome,
+            'estrelas': self.estrelas,
+            'diaria': self.diaria,
+            'cidade': self.cidade
+        }
+
 class Hoteis(Resource):
     def get(self):
         return {'hoteis': hoteis_bd}
