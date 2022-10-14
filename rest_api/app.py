@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from src.hoteis import Hoteis, Hotel
+from resources.hoteis import Hoteis, Hotel
 
 
 app = Flask(__name__)
