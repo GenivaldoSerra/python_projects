@@ -11,5 +11,7 @@ create_hotel = "INSERT INTO hoteis VALUES ('alpha', 'Alpha Hotel', \
                 4.3, 420.34, 'Rio de Janeiro')"
 
 cursor.execute(create_table)
+cursor.execute(create_hotel)
+
 connection.commit()
 connection.close()
