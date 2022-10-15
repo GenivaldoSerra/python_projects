@@ -1,4 +1,15 @@
-class HotelModel:
+from sql_alchemy import data
+
+
+class HotelModel(data.Model):
+    __tablename__ = 'hoteis'
+    
+    id = data.Column(data.String, primary_key=True)
+    nome = data.Column(data.String(80))
+    estrelas = data.Column(data.Float(precision=1))
+    diaria = data.Column(data.Float(precision=2))
+    cidade = data.Column(data.String(40))
+    
     def __init__(self, id, nome, estrelas, diaria, cidade):
         self.id = id
         self.nome = nome
