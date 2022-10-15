@@ -1,4 +1,5 @@
 from flask_restful import Resource, reqparse
+
 from model.hotel import HotelModel
 
 hoteis_bd = [
