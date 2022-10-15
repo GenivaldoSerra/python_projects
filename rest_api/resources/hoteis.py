@@ -58,4 +58,3 @@ class Hotel(Resource):
         global hoteis_bd
         hoteis_bd = [hotel for hotel in hoteis_bd if hotel['id'] != id]
         return {'message': 'Hotel deleted.'}, 200
-    
