@@ -1,10 +1,9 @@
-from http import server
 from flask import Flask, Blueprint
 from flask_restplus import Api
 
 
-class Server:
-    def __init__(self):
+class Server():
+    def __init__(self, ):
         self.app = Flask(__name__)
         self.blueprint = Blueprint('api', __name__, url_prefix='/api')
         self.api = Api(self.blueprint,
@@ -19,13 +18,13 @@ class Server:
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         self.app.config['PROPAGATE_EXCEPTIONS'] = True
         
-        self.books_ns = self.books_ns()
+        self.book_ns = self.book_ns()
         
-        def book_ns(self, ):
-            return self.api.add_namespace(name='Books',
-                                        description='Books related operations', path='/')
+    def book_ns(self, ):
+        return self.api.add_namespace(name='Books',
+                                        description='boos related operations', path='/')
 
-    def run(self):
+    def run(self, ):
         self.app.run(
             debug=True,
             port=5000,
