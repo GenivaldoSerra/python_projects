@@ -3,7 +3,6 @@ from marshmallow import ValidationError
 
 from db import db
 from ma import ma
-
 from src.server.instance import server
 
 api = server.api
