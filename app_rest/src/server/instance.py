@@ -13,6 +13,20 @@ class Server:
                     description='API'
                     )
         self.app.register_blueprint(self.blueprint)
+        
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+        self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        self.app.config['PROPAGATE_EXCEPTIONS'] = True
+        
+        self.books_ns = self.books_ns()
+        
+        def book_ns(self, ):
+            return self.api.add_namespace(name='Books',
+                                        description='Books related operations', path='/')
 
     def run(self):
-        self.app.run(debug=True)
+        self.app.run(
+            debug=True,
+            port=5000,
+            host='0.0.0.0'
+            )
