@@ -4,7 +4,7 @@ from marshmallow import ValidationError
 from db import db
 from ma import ma
 
-from server.instance import server
+from src.server.instance import server
 
 api = server.api
 app = server.app
