@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint
+from flask import Blueprint, Flask
 from flask_restplus import Api
 
 
@@ -18,7 +18,7 @@ class Server():
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         self.app.config['PROPAGATE_EXCEPTIONS'] = True
         
-        self.book_ns = self.book_ns()
+        self.book_ns = self.book_ns
         
     def book_ns(self, ):
         return self.api.add_namespace(name='Books',
