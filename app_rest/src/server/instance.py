@@ -1,3 +1,4 @@
+from http import server
 from flask import Flask, Blueprint
 from flask_restplus import Api
 
@@ -30,3 +31,4 @@ class Server:
             port=5000,
             host='0.0.0.0'
             )
+server = Server()
