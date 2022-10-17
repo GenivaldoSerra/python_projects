@@ -3,7 +3,6 @@ from flask_restplus import Resource, fields
 
 from src.models.book import BookModel
 from src.schemas.book import BookSchema
-
 from src.server.instance import server
 
 book_ns = server.book_ns
