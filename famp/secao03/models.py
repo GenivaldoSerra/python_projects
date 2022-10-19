@@ -8,5 +8,3 @@ class Cursor(BaseModel):
     titulo: str
     aulas: int
     horas: int
-    created_at: Optional[str] = None
-    updated_at: Optional[str] = None
