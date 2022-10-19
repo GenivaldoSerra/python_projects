@@ -1,5 +1,6 @@
 from ma import ma
-from models.book import BookModel
+from src.models.book import BookModel
+
 
 class BookSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
