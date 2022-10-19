@@ -1,7 +1,7 @@
 from sql_alchemy import data
 
 
-class HotelModel(data.Model):
+class HotelModel(data.Model):  # type: ignore
     __tablename__ = 'hoteis'
     
     id = data.Column(data.String, primary_key=True)
