@@ -26,6 +26,11 @@ cursos = {
 async def get_cursos():
     return cursos 
 
+@app.get("/cursos/{curso_id}")
+async def get_curso(curso_id: int):
+    return cursos[curso_id]
+    
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
