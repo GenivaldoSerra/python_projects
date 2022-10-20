@@ -1,7 +1,6 @@
-from fastapi import FastAPI
-from fastapi import HTTPException
-from fastapi import status
+from fastapi import FastAPI, HTTPException, Response, status
 
+from models import Curso
 
 app = FastAPI()
 
@@ -38,6 +37,36 @@ async def get_curso(curso_id: int):
             detail="Curso não encontrado"
         )
 
+@app.post("/cursos", status_code=status.HTTP_201_CREATED)
+async def post_curso(curso: Curso):
+    id: int = len(cursos) + 1
+    cursos[id] = curso
+    del curso.id
+    return curso
+
+
+@app.put("/cursos/{curso_id}")
+async def put_curso(curso_id: int, curso: Curso):
+    if curso_id in cursos:
+        cursos[curso_id] = curso
+        del curso.id
+        return curso
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f'Curso não encontrado com o id {curso_id}'
+        )
+        
+@app.delete("/cursos/{curso_id}", )
+async def delete_curso(curso_id: int):
+    if curso_id in cursos:
+        del cursos[curso_id]
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f'Curso não encontrado com o id {curso_id}'
+        )
 
 if __name__ == "__main__":
     import uvicorn
