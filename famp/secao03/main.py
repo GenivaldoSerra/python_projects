@@ -63,7 +63,7 @@ async def put_curso(curso_id: int, curso: Curso):
         )
 
 
-@app.delete("/cursos/{curso_id}", )
+@app.delete("/cursos/{curso_id}")
 async def delete_curso(curso_id: int):
     if curso_id in cursos:
         del cursos[curso_id]
