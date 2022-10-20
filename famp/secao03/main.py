@@ -1,4 +1,6 @@
-from fastapi import FastAPI, HTTPException, Response, status
+from typing import Optional
+
+from fastapi import FastAPI, HTTPException, Path, Query, Response, status
 
 from models import Curso
 
@@ -23,12 +25,14 @@ cursos = {
     }
 }
 
+
 @app.get("/cursos")
 async def get_cursos():
-    return cursos 
+    return cursos
+
 
 @app.get("/cursos/{curso_id}")
-async def get_curso(curso_id: int):
+async def get_curso(curso_id: int = Path(default=None, title="O ID do curso", description="Deve ser entre 1 2 3", gt=0, le=3)):
     try:
         return cursos[curso_id]
     except KeyError:
@@ -36,6 +40,7 @@ async def get_curso(curso_id: int):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Curso não encontrado"
         )
+
 
 @app.post("/cursos", status_code=status.HTTP_201_CREATED)
 async def post_curso(curso: Curso):
@@ -56,7 +61,8 @@ async def put_curso(curso_id: int, curso: Curso):
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f'Curso não encontrado com o id {curso_id}'
         )
-        
+
+
 @app.delete("/cursos/{curso_id}", )
 async def delete_curso(curso_id: int):
     if curso_id in cursos:
@@ -67,6 +73,14 @@ async def delete_curso(curso_id: int):
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f'Curso não encontrado com o id {curso_id}'
         )
+        
+@app.get('/calculadora')
+async def calcular(a: int = Query(default=None, gt=5), b: int = Query(default=None, gt=10), c: Optional[int] = None):
+    soma: int = a + b
+    if c:
+        soma = soma + c
+    return {"resultado": soma}
+
 
 if __name__ == "__main__":
     import uvicorn
